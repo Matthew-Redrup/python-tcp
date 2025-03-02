@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://Matthew-Redrup.github.io/python-tcp/index.html</loc>
+    <lastmod>2025-03-02T12:32:50.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Matthew-Redrup.github.io/python-tcp/tcp_server.html</loc>
+    <lastmod>2025-03-02T12:32:50.077Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Matthew-Redrup.github.io/python-tcp/core.html</loc>
+    <lastmod>2025-03-02T12:32:50.024Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Matthew-Redrup.github.io/python-tcp/tcp_client.html</loc>
+    <lastmod>2025-03-02T12:32:50.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Matthew-Redrup.github.io/python-tcp/chat_app.html</loc>
+    <lastmod>2025-03-02T12:32:50.087Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Matthew-Redrup.github.io/python-tcp/examples.html</loc>
+    <lastmod>2025-03-02T12:32:50.065Z</lastmod>
+  </url>
+</urlset>

@@ -1,0 +1,482 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "python_tcp",
+    "section": "",
+    "text": "This package demonstrates how a TCP client/server architecture works by providing a transparent, educational implementation using Python’s socket module. It’s built with nbdev to combine code, documentation, and examples in a single place, making it an excellent learning resource.",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "python_tcp",
+    "section": "",
+    "text": "This package demonstrates how a TCP client/server architecture works by providing a transparent, educational implementation using Python’s socket module. It’s built with nbdev to combine code, documentation, and examples in a single place, making it an excellent learning resource.",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "python_tcp",
+    "section": "Install",
+    "text": "Install\npip install python_tcp",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "python_tcp",
+    "section": "How to use",
+    "text": "How to use\nHere’s a simple example of a TCP echo server and client:\n\nfrom python_tcp.server import TCPServer\nfrom python_tcp.client import TCPClient\nimport time\n\n# Start a server\nserver = TCPServer(port=8000)\nserver.start()\n\n# Connect with a client\nclient = TCPClient()\nclient.connect('127.0.0.1', 8000)\n\n# Send a message\nclient.send(b\"Hello, TCP world!\")\n\n# Receive the response\nresponse = client.receive()\nprint(f\"Received: {response.decode('utf-8')}\")\n\n# Clean up\nclient.close()\nserver.stop()\n\nServer started on 127.0.0.1:8000\nConnecting to 127.0.0.1:8000...\nNew connection from 127.0.0.1:34062 (ID: e1850ccc-b18d-4764-b925-5850a0f64bdd)\nConnected to 127.0.0.1:8000\nReceived from e1850ccc-b18d-4764-b925-5850a0f64bdd: Hello, TCP world!\nReceived: Hello, TCP world!\nConnection closed\nConnection client-connection: ESTABLISHED -&gt; CLOSED\nConnection e1850ccc-b18d-4764-b925-5850a0f64bdd: ESTABLISHED -&gt; CLOSED\nConnection e1850ccc-b18d-4764-b925-5850a0f64bdd closed\nServer socket closed\nConnection e1850ccc-b18d-4764-b925-5850a0f64bdd: CLOSED -&gt; CLOSED\nConnection e1850ccc-b18d-4764-b925-5850a0f64bdd closed\nServer stopped",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#understanding-tcp",
+    "href": "index.html#understanding-tcp",
+    "title": "python_tcp",
+    "section": "Understanding TCP",
+    "text": "Understanding TCP\nTCP (Transmission Control Protocol) is a connection-oriented protocol that ensures reliable data delivery. This project demonstrates key TCP concepts:\n\nThe Three-Way Handshake\nWhen establishing a connection, TCP uses a three-way handshake:\n\nSYN: Client sends a SYN packet with sequence number x\nSYN-ACK: Server responds with SYN-ACK (sequence y, acknowledgment x+1)\nACK: Client sends ACK (acknowledgment y+1)\n\n\n\nTCP Socket States\nTCP sockets go through various states: - CLOSED - LISTEN (server waiting for connections) - SYN_SENT (client initiated connection request) - SYN_RECEIVED (server received SYN) - ESTABLISHED (connection active) - FIN_WAIT (connection termination initiated) - CLOSE_WAIT (waiting for application to close) - TIME_WAIT (waiting for network cleanup)\nOur implementation tracks and demonstrates these states.",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#implementation-notes",
+    "href": "index.html#implementation-notes",
+    "title": "python_tcp",
+    "section": "Implementation Notes",
+    "text": "Implementation Notes\nThis project takes care to avoid common pitfalls when using the socket library:\n\nNaming conflicts: We use different attribute names (like sock instead of socket) to avoid confusion with the module name\nSocket cleanup: We ensure proper socket closure in all scenarios, including error conditions\nThread safety: Our multithreaded design includes proper synchronization\nError handling: Comprehensive error handling for network operations",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#project-components",
+    "href": "index.html#project-components",
+    "title": "python_tcp",
+    "section": "Project Components",
+    "text": "Project Components\nThis project contains several components:\n\nCore: Basic TCP types and utilities\nServer: TCP server implementations with various features\nClient: TCP client implementations with various features\nExamples: Practical demonstrations\nChat Application: A complete TCP-based chat application",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#server-types",
+    "href": "index.html#server-types",
+    "title": "python_tcp",
+    "section": "Server Types",
+    "text": "Server Types\nWe provide several server implementations:\n\nTCPServer: Basic TCP server that echoes messages\nEnhancedTCPServer: Server with custom message handling\nEventDrivenTCPServer: Server with event callbacks",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#client-types",
+    "href": "index.html#client-types",
+    "title": "python_tcp",
+    "section": "Client Types",
+    "text": "Client Types\nThe client implementations mirror the server capabilities:\n\nTCPClient: Basic TCP client\nAsyncTCPClient: Client with asynchronous message reception\nEventDrivenTCPClient: Client with event callbacks",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#educational-focus",
+    "href": "index.html#educational-focus",
+    "title": "python_tcp",
+    "section": "Educational Focus",
+    "text": "Educational Focus\nThis package is designed for educational purposes to understand:\n\nHow TCP connections are established and closed\nThe client/server model\nSocket programming\nEvent-driven networking\nAsynchronous I/O\n\nEach component includes detailed documentation explaining the underlying TCP concepts.",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#limitations",
+    "href": "index.html#limitations",
+    "title": "python_tcp",
+    "section": "Limitations",
+    "text": "Limitations\nAs an educational tool, this implementation has some limitations:\n\nNot optimized for production use\nLimited error handling compared to production libraries\nNo support for TLS/SSL\nNo support for IPv6",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#alternative-libraries",
+    "href": "index.html#alternative-libraries",
+    "title": "python_tcp",
+    "section": "Alternative Libraries",
+    "text": "Alternative Libraries\nFor production use, consider:\n\nasyncio: Python’s built-in asynchronous I/O library\nsocketserver: Python’s standard library for creating network servers\ntwisted: Event-driven networking engine\ntornado: Web framework and asynchronous networking library",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "python_tcp",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall python_tcp in Development mode\n# make sure python_tcp package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to python_tcp\n$ nbdev_prepare",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "python_tcp",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/Matthew-Redrup/python-tcp.git\nor from conda\n$ conda install -c Matthew-Redrup python_tcp\nor from pypi\n$ pip install python_tcp\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "python_tcp"
+    ]
+  },
+  {
+    "objectID": "tcp_server.html",
+    "href": "tcp_server.html",
+    "title": "TCP Server Implementation",
+    "section": "",
+    "text": "In this notebook, we’ll implement a TCP server that: 1. Creates a socket 2. Binds to an address 3. Listens for incoming connections 4. Accepts connections and handles them 5. Sends and receives data 6. Closes connections gracefully\nLet’s import the necessary modules:",
+    "crumbs": [
+      "TCP Server Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_server.html#introduction",
+    "href": "tcp_server.html#introduction",
+    "title": "TCP Server Implementation",
+    "section": "",
+    "text": "In this notebook, we’ll implement a TCP server that: 1. Creates a socket 2. Binds to an address 3. Listens for incoming connections 4. Accepts connections and handles them 5. Sends and receives data 6. Closes connections gracefully\nLet’s import the necessary modules:",
+    "crumbs": [
+      "TCP Server Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_server.html#simple-tcp-server",
+    "href": "tcp_server.html#simple-tcp-server",
+    "title": "TCP Server Implementation",
+    "section": "Simple TCP Server",
+    "text": "Simple TCP Server\nWe’ll start with a basic TCP server implementation that will handle connections one at a time:\n\nsource\n\nTCPServer\n\n TCPServer (host:str='127.0.0.1', port:int=0, backlog:int=5,\n            buffer_size:int=1024)\n\nA simple TCP server that can handle multiple clients.",
+    "crumbs": [
+      "TCP Server Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_server.html#enhanced-tcp-server-with-custom-message-handling",
+    "href": "tcp_server.html#enhanced-tcp-server-with-custom-message-handling",
+    "title": "TCP Server Implementation",
+    "section": "Enhanced TCP Server with Custom Message Handling",
+    "text": "Enhanced TCP Server with Custom Message Handling\nNow let’s create a more flexible server that allows custom message handling:\n\nsource\n\nEnhancedTCPServer\n\n EnhancedTCPServer (host:str='127.0.0.1', port:int=0, backlog:int=5,\n                    buffer_size:int=1024)\n\nAn enhanced TCP server that supports custom message handlers.",
+    "crumbs": [
+      "TCP Server Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_server.html#tcp-server-with-connection-events",
+    "href": "tcp_server.html#tcp-server-with-connection-events",
+    "title": "TCP Server Implementation",
+    "section": "TCP Server with Connection Events",
+    "text": "TCP Server with Connection Events\nFinally, let’s create a version that provides event callbacks for connection events:\n\nsource\n\nEventDrivenTCPServer\n\n EventDrivenTCPServer (host:str='127.0.0.1', port:int=0, backlog:int=5,\n                       buffer_size:int=1024)\n\nA TCP server that triggers events for connection lifecycle.",
+    "crumbs": [
+      "TCP Server Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_server.html#example-usage",
+    "href": "tcp_server.html#example-usage",
+    "title": "TCP Server Implementation",
+    "section": "Example Usage",
+    "text": "Example Usage\nHere’s a simple example of how to use our TCP server:\n\ndef simple_server_demo():\n    # Create and start a TCP server\n    server = TCPServer(port=8000)\n    server.start()\n    \n    try:\n        # Keep the server running for 60 seconds\n        print(\"Server running. Press Ctrl+C to stop...\")\n        time.sleep(60)\n    except KeyboardInterrupt:\n        print(\"Keyboard interrupt received, stopping server...\")\n    finally:\n        # Stop the server\n        server.stop()\n\n\n# Uncomment to run the demo\n# simple_server_demo()\n\n\ndef event_driven_server_demo():\n    # Create and start an event-driven TCP server\n    server = EventDrivenTCPServer(port=8000)\n    \n    # Set up event handlers\n    server.on_connect = lambda conn_id, addr: print(f\"EVENT: Client connected: {addr[0]}:{addr[1]}\")\n    server.on_disconnect = lambda conn_id: print(f\"EVENT: Client disconnected: {conn_id}\")\n    server.on_data = lambda conn_id, data: print(f\"EVENT: Received data from {conn_id}: {data.decode('utf-8')}\")\n    \n    # Set up a custom message handler\n    def message_handler(conn_id, data):\n        message = data.decode('utf-8')\n        # Echo the message back with a prefix\n        return f\"Server received: {message}\".encode('utf-8')\n    \n    server.set_message_handler(message_handler)\n    \n    # Start the server\n    server.start()\n    \n    try:\n        # Keep the server running for 60 seconds\n        print(\"Event-driven server running. Press Ctrl+C to stop...\")\n        time.sleep(60)\n    except KeyboardInterrupt:\n        print(\"Keyboard interrupt received, stopping server...\")\n    finally:\n        # Stop the server\n        server.stop()\n\n\n# Uncomment to run the demo\n# event_driven_server_demo()",
+    "crumbs": [
+      "TCP Server Implementation"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It provides reliable, ordered, and error-checked delivery of a stream of bytes between applications running on hosts communicating via an IP network.\nTCP is: - Connection-oriented: A connection is established before data is sent - Reliable: It guarantees delivery of data to the destination - Ordered: If packets arrive in the wrong order, TCP reorders them - Error-checked: Corrupted packets are retransmitted",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#introduction-to-tcp",
+    "href": "core.html#introduction-to-tcp",
+    "title": "core",
+    "section": "",
+    "text": "The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It provides reliable, ordered, and error-checked delivery of a stream of bytes between applications running on hosts communicating via an IP network.\nTCP is: - Connection-oriented: A connection is established before data is sent - Reliable: It guarantees delivery of data to the destination - Ordered: If packets arrive in the wrong order, TCP reorders them - Error-checked: Corrupted packets are retransmitted",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#the-three-way-handshake",
+    "href": "core.html#the-three-way-handshake",
+    "title": "core",
+    "section": "The Three-Way Handshake",
+    "text": "The Three-Way Handshake\nTCP establishes a connection through a process called the three-way handshake:\n\nSYN: Client sends a SYN (synchronize) packet with a random sequence number x\nSYN-ACK: Server responds with a SYN-ACK packet with its own sequence number y and acknowledgment number x+1\nACK: Client sends an ACK packet with acknowledgment number y+1 to establish the connection\n\n\nfrom IPython.display import SVG\nfrom IPython.display import display\n\n\nsvg_data = '''\n&lt;svg width=\"500\" height=\"300\" xmlns=\"http://www.w3.org/2000/svg\"&gt;\n    &lt;rect width=\"100%\" height=\"100%\" fill=\"white\"/&gt;\n    \n    &lt;!-- Entities --&gt;\n    &lt;rect x=\"50\" y=\"20\" width=\"100\" height=\"50\" fill=\"lightblue\" stroke=\"black\"/&gt;\n    &lt;text x=\"100\" y=\"50\" text-anchor=\"middle\"&gt;Client&lt;/text&gt;\n    &lt;rect x=\"350\" y=\"20\" width=\"100\" height=\"50\" fill=\"lightgreen\" stroke=\"black\"/&gt;\n    &lt;text x=\"400\" y=\"50\" text-anchor=\"middle\"&gt;Server&lt;/text&gt;\n    \n    &lt;!-- Lines --&gt;\n    &lt;line x1=\"100\" y1=\"70\" x2=\"100\" y2=\"280\" stroke=\"gray\" stroke-dasharray=\"5,5\"/&gt;\n    &lt;line x1=\"400\" y1=\"70\" x2=\"400\" y2=\"280\" stroke=\"gray\" stroke-dasharray=\"5,5\"/&gt;\n    \n    &lt;!-- Arrows --&gt;\n    &lt;line x1=\"100\" y1=\"120\" x2=\"380\" y2=\"150\" stroke=\"black\" stroke-width=\"2\"/&gt;\n    &lt;polygon points=\"380,150 370,145 370,155\" fill=\"black\"/&gt;\n    &lt;text x=\"240\" y=\"125\" text-anchor=\"middle\"&gt;SYN (seq=x)&lt;/text&gt;\n    \n    &lt;line x1=\"400\" y1=\"180\" x2=\"120\" y2=\"210\" stroke=\"black\" stroke-width=\"2\"/&gt;\n    &lt;polygon points=\"120,210 130,205 130,215\" fill=\"black\"/&gt;\n    &lt;text x=\"260\" y=\"185\" text-anchor=\"middle\"&gt;SYN-ACK (seq=y, ack=x+1)&lt;/text&gt;\n    \n    &lt;line x1=\"100\" y1=\"240\" x2=\"380\" y2=\"270\" stroke=\"black\" stroke-width=\"2\"/&gt;\n    &lt;polygon points=\"380,270 370,265 370,275\" fill=\"black\"/&gt;\n    &lt;text x=\"240\" y=\"245\" text-anchor=\"middle\"&gt;ACK (ack=y+1)&lt;/text&gt;\n&lt;/svg&gt;\n'''\n\ndisplay(SVG(data=svg_data))",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#socket-api-in-python",
+    "href": "core.html#socket-api-in-python",
+    "title": "core",
+    "section": "Socket API in Python",
+    "text": "Socket API in Python\nPython’s socket module provides a simple API for creating TCP connections. Here are the key elements we’ll use:\nWe will create a simplified wrapper around Python’s socket API to make it easier to understand TCP concepts.\n\nsource\n\nget_free_port\n\n get_free_port ()\n\nGet an available port number by creating and closing a temporary socket.\nLet’s define some constants for our implementation:",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#socket-state-information",
+    "href": "core.html#socket-state-information",
+    "title": "core",
+    "section": "Socket State Information",
+    "text": "Socket State Information\nTCP sockets go through various states during their lifecycle:\n\nCLOSED: No connection\nLISTEN: Server is waiting for incoming connections\nSYN_SENT: Client has sent SYN packet\nSYN_RECEIVED: Server has received SYN and sent SYN-ACK\nESTABLISHED: Connection is established\nFIN_WAIT: Connection termination in progress\nCLOSE_WAIT: Waiting for application to close\nCLOSING: Both sides have initiated connection termination\nTIME_WAIT: Waiting to ensure remote TCP received connection termination\nLAST_ACK: Waiting for last acknowledgement\n\nWe’ll create utility functions to help us track these states in our implementation.\n\nsource\n\nSocketState\n\n SocketState ()\n\nConstants for socket states.\nNow let’s define a basic connection structure that will help us manage TCP connections:\n\nsource\n\n\nTCPConnection\n\n TCPConnection (sock:Optional[socket.socket]=None, state:str='CLOSED',\n                remote_address:Optional[Tuple[str,int]]=None,\n                connection_id:Optional[str]=None)\n\nRepresents a TCP connection with state information.\nNote that I’ve renamed the field from socket to sock to avoid confusion with the module name.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "core.html#tcp-connection-lifecycle",
+    "href": "core.html#tcp-connection-lifecycle",
+    "title": "core",
+    "section": "TCP Connection Lifecycle",
+    "text": "TCP Connection Lifecycle\nA TCP connection goes through the following phases: 1. Connection establishment (three-way handshake) 2. Data transfer 3. Connection termination (four-way handshake)\nIn our implementation, we’ll focus on making these phases explicit and easy to understand.",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "tcp_client.html",
+    "href": "tcp_client.html",
+    "title": "TCP Client Implementation",
+    "section": "",
+    "text": "In this notebook, we’ll implement a TCP client that: 1. Creates a socket 2. Connects to a server 3. Sends and receives data 4. Closes the connection gracefully\nLet’s import the necessary modules:",
+    "crumbs": [
+      "TCP Client Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_client.html#introduction",
+    "href": "tcp_client.html#introduction",
+    "title": "TCP Client Implementation",
+    "section": "",
+    "text": "In this notebook, we’ll implement a TCP client that: 1. Creates a socket 2. Connects to a server 3. Sends and receives data 4. Closes the connection gracefully\nLet’s import the necessary modules:",
+    "crumbs": [
+      "TCP Client Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_client.html#simple-tcp-client",
+    "href": "tcp_client.html#simple-tcp-client",
+    "title": "TCP Client Implementation",
+    "section": "Simple TCP Client",
+    "text": "Simple TCP Client\nWe’ll start with a basic TCP client implementation:\n\nsource\n\nTCPClient\n\n TCPClient (buffer_size:int=1024)\n\nA simple TCP client for connecting to TCP servers.",
+    "crumbs": [
+      "TCP Client Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_client.html#enhanced-tcp-client-with-asynchronous-receive",
+    "href": "tcp_client.html#enhanced-tcp-client-with-asynchronous-receive",
+    "title": "TCP Client Implementation",
+    "section": "Enhanced TCP Client with Asynchronous Receive",
+    "text": "Enhanced TCP Client with Asynchronous Receive\nNow let’s create a more advanced client with asynchronous message reception:\n\nsource\n\nAsyncTCPClient\n\n AsyncTCPClient (buffer_size:int=1024)\n\nA TCP client with asynchronous message reception in a background thread.",
+    "crumbs": [
+      "TCP Client Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_client.html#event-driven-tcp-client",
+    "href": "tcp_client.html#event-driven-tcp-client",
+    "title": "TCP Client Implementation",
+    "section": "Event-Driven TCP Client",
+    "text": "Event-Driven TCP Client\nFinally, let’s create an event-driven TCP client with detailed connection state events:\n\nsource\n\nEventDrivenTCPClient\n\n EventDrivenTCPClient (buffer_size:int=1024)\n\nA TCP client that emits events for connection state changes.\n\nc = EventDrivenTCPClient()\nc.connect(LOCALHOST, 8000)\nc.send(b\"Hello, server!\")\nc.receive()\nc.close()\n\nConnecting to 127.0.0.1:8000...\nError connecting to 127.0.0.1:8000: [Errno 111] Connection refused\nConnection closed\nNot connected to a server\nNot connected to a server",
+    "crumbs": [
+      "TCP Client Implementation"
+    ]
+  },
+  {
+    "objectID": "tcp_client.html#example-usage",
+    "href": "tcp_client.html#example-usage",
+    "title": "TCP Client Implementation",
+    "section": "Example Usage",
+    "text": "Example Usage\nHere’s a simple example of how to use our basic TCP client:\n\ndef simple_client_demo():\n    # Create a TCP client\n    client = TCPClient()\n    \n    # Connect to a server\n    if client.connect(LOCALHOST, 8000):\n        try:\n            # Send a message\n            client.send(b\"Hello, server!\")\n            \n            # Receive the response\n            response = client.receive()\n            if response:\n                print(f\"Received from server: {response.decode('utf-8')}\")\n            \n            # Send another message\n            client.send(b\"How are you?\")\n            \n            # Receive the response\n            response = client.receive()\n            if response:\n                print(f\"Received from server: {response.decode('utf-8')}\")\n                \n        finally:\n            # Close the connection\n            client.close()\n\n# Uncomment to run the demo (make sure a server is running)\n# simple_client_demo()\n\nLet’s see a more advanced example with the event-driven client:\n\ndef event_driven_client_demo():\n    # Create an event-driven TCP client\n    client = EventDrivenTCPClient()\n    \n    # Set up event handlers\n    client.on_connect = lambda host, port: print(f\"EVENT: Connected to {host}:{port}\")\n    client.on_disconnect = lambda: print(\"EVENT: Disconnected from server\")\n    client.on_data = lambda data: print(f\"EVENT: Received data: {data.decode('utf-8')}\")\n    client.on_error = lambda error: print(f\"EVENT: Error occurred: {error}\")\n    \n    # Connect to a server\n    if client.connect(LOCALHOST, 8000):\n        try:\n            # Send some messages\n            client.send(b\"Hello from event-driven client!\")\n            time.sleep(1)\n            \n            client.send(b\"This client uses events for processing responses.\")\n            time.sleep(1)\n            \n            # Wait for a while to receive responses\n            print(\"Waiting for responses...\")\n            time.sleep(3)\n            \n        finally:\n            # Close the connection\n            client.close()\n\n# Uncomment to run the demo (make sure a server is running)\n# event_driven_client_demo()",
+    "crumbs": [
+      "TCP Client Implementation"
+    ]
+  },
+  {
+    "objectID": "chat_app.html",
+    "href": "chat_app.html",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "",
+    "text": "In this tutorial, we’ll build a simple chat application using our TCP server and client implementations. This will demonstrate a practical application of the TCP protocol and show how our library can be used to build real-world applications.\nLet’s start by importing the necessary modules:\n\nfrom python_tcp.core import *\nfrom python_tcp.server import EventDrivenTCPServer\nfrom python_tcp.client import EventDrivenTCPClient\nimport threading\nimport time\nimport json\nimport datetime",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#introduction",
+    "href": "chat_app.html#introduction",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "",
+    "text": "In this tutorial, we’ll build a simple chat application using our TCP server and client implementations. This will demonstrate a practical application of the TCP protocol and show how our library can be used to build real-world applications.\nLet’s start by importing the necessary modules:\n\nfrom python_tcp.core import *\nfrom python_tcp.server import EventDrivenTCPServer\nfrom python_tcp.client import EventDrivenTCPClient\nimport threading\nimport time\nimport json\nimport datetime",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#designing-the-chat-protocol",
+    "href": "chat_app.html#designing-the-chat-protocol",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "1. Designing the Chat Protocol",
+    "text": "1. Designing the Chat Protocol\nFirst, let’s design a simple protocol for our chat application. We’ll use JSON to format our messages with the following structure:\n{\n    \"type\": \"message_type\",\n    \"username\": \"sender_username\",\n    \"content\": \"message_content\",\n    \"timestamp\": unix_timestamp\n}\nMessage types will include: - join: User joining the chat - leave: User leaving the chat - message: Regular chat message - users: List of active users (sent by server)",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#implementing-the-chat-server",
+    "href": "chat_app.html#implementing-the-chat-server",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "2. Implementing the Chat Server",
+    "text": "2. Implementing the Chat Server\nLet’s start by implementing the chat server:\n\nsource\n\nChatServer\n\n ChatServer (host='127.0.0.1', port=0)\n\nA simple chat server using our TCP implementation.",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#implementing-the-chat-client",
+    "href": "chat_app.html#implementing-the-chat-client",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "3. Implementing the Chat Client",
+    "text": "3. Implementing the Chat Client\nNow, let’s implement the chat client:\n\nsource\n\nChatClient\n\n ChatClient (username)\n\nA simple chat client using our TCP implementation.",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#using-the-chat-application",
+    "href": "chat_app.html#using-the-chat-application",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "4. Using the Chat Application",
+    "text": "4. Using the Chat Application\nNow let’s demonstrate how to use our chat application:\n\ndef chat_demo():\n    # Start the chat server\n    server = ChatServer(port=8000)\n    server_port = server.start()\n    \n    try:\n        # Create and connect multiple chat clients\n        clients = []\n        usernames = [\"Alice\", \"Bob\", \"Charlie\"]\n        \n        for username in usernames:\n            # Create a message handler for this client\n            def create_message_handler(name):\n                return lambda msg: print(f\"[{name}] {msg}\")\n            \n            # Create and set up the client\n            client = ChatClient(username)\n            client.set_message_callback(create_message_handler(username))\n            \n            # Connect to the server\n            if client.connect(LOCALHOST, server_port):\n                # Join the chat\n                client.join()\n                clients.append(client)\n                \n                # Give some time for the join process\n                time.sleep(0.5)\n            else:\n                print(f\"Failed to connect client {username}\")\n        \n        # Wait a moment for all clients to connect\n        time.sleep(1)\n        \n        # Send some messages\n        clients[0].send_message(\"Hello everyone!\")\n        time.sleep(0.5)\n        \n        clients[1].send_message(\"Hi Alice, how are you?\")\n        time.sleep(0.5)\n        \n        clients[2].send_message(\"Hey folks, nice to meet you all!\")\n        time.sleep(0.5)\n        \n        clients[0].send_message(\"I'm doing well, thanks Bob!\")\n        time.sleep(0.5)\n        \n        # Have one client leave\n        print(\"\\nCharlie is leaving the chat...\")\n        clients[2].leave()\n        time.sleep(1)\n        \n        # Continue the conversation\n        clients[0].send_message(\"Looks like Charlie had to go.\")\n        time.sleep(0.5)\n        \n        clients[1].send_message(\"Yes, too bad. Anyway, nice chatting with you Alice!\")\n        time.sleep(0.5)\n        \n        # Close remaining clients\n        for client in clients[:-1]:  # Charlie already left\n            client.leave()\n            time.sleep(0.5)\n        \n    finally:\n        # Stop the server\n        server.stop()\n\n# Uncomment to run the demo\n# chat_demo()",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#building-a-command-line-chat-interface",
+    "href": "chat_app.html#building-a-command-line-chat-interface",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "5. Building a Command-Line Chat Interface",
+    "text": "5. Building a Command-Line Chat Interface\nFinally, let’s create a simple command-line interface for our chat application:\n\nsource\n\nrun_chat_client\n\n run_chat_client ()\n\nRun a command-line chat client.\n\nsource\n\n\nrun_chat_server\n\n run_chat_server ()\n\nRun a chat server.\n\n\nDefine main entry points\n\nsource\n\n\nstart_server\n\n start_server ()\n\nEntry point for starting a chat server.\n\nsource\n\n\nstart_client\n\n start_client ()\n\nEntry point for starting a chat client.",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "chat_app.html#conclusion",
+    "href": "chat_app.html#conclusion",
+    "title": "Building a Simple TCP Chat Application",
+    "section": "Conclusion",
+    "text": "Conclusion\nIn this tutorial, we’ve built a complete chat application using our TCP server and client implementations. This demonstrates how the TCP protocol can be used to build real-world applications that require reliable communication between multiple clients and a server.\nThe chat application includes: - A TCP-based server that handles multiple client connections - A JSON-based protocol for exchanging messages - Support for joining/leaving the chat - User presence tracking - Message broadcasting - Error handling - A simple command-line interface\nThis demonstrates the practical application of the concepts we’ve learned about TCP networking.",
+    "crumbs": [
+      "Building a Simple TCP Chat Application"
+    ]
+  },
+  {
+    "objectID": "examples.html",
+    "href": "examples.html",
+    "title": "TCP Server and Client Examples",
+    "section": "",
+    "text": "In this notebook, we’ll see practical examples of using our TCP server and client implementations. We’ll demonstrate:\n\nBasic echo server and client\nCustom message handling\nEvent-driven communication\nMultiple client connections\nSending structured data\n\nLet’s import our modules:\n\nfrom python_tcp.core import *\nfrom python_tcp.server import *\nfrom python_tcp.client import *\nimport threading\nimport time\nimport json",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#introduction",
+    "href": "examples.html#introduction",
+    "title": "TCP Server and Client Examples",
+    "section": "",
+    "text": "In this notebook, we’ll see practical examples of using our TCP server and client implementations. We’ll demonstrate:\n\nBasic echo server and client\nCustom message handling\nEvent-driven communication\nMultiple client connections\nSending structured data\n\nLet’s import our modules:\n\nfrom python_tcp.core import *\nfrom python_tcp.server import *\nfrom python_tcp.client import *\nimport threading\nimport time\nimport json",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#basic-echo-server-and-client",
+    "href": "examples.html#basic-echo-server-and-client",
+    "title": "TCP Server and Client Examples",
+    "section": "1. Basic Echo Server and Client",
+    "text": "1. Basic Echo Server and Client\nLet’s start with a simple echo server that repeats back whatever message it receives:\n\ndef run_echo_server():\n    # Create and start a basic TCP server\n    server = TCPServer(port=8000)\n    server.start()\n    \n    print(f\"Echo server running at {server.host}:{server.port}\")\n    return server\n\ndef run_echo_client(server_port=8000, messages=None):\n    if messages is None:\n        messages = [\"Hello, server!\", \"How are you?\", \"Goodbye!\"]\n    \n    # Create a TCP client\n    client = TCPClient()\n    \n    # Connect to the server\n    if client.connect(LOCALHOST, server_port):\n        try:\n            # Send each message and display the response\n            for msg in messages:\n                print(f\"\\nSending: {msg}\")\n                client.send(msg.encode('utf-8'))\n                \n                # Receive the response\n                response = client.receive()\n                if response:\n                    print(f\"Received: {response.decode('utf-8')}\")\n                else:\n                    print(\"No response received!\")\n                    break\n                \n                # Small delay between messages\n                time.sleep(0.5)\n        finally:\n            # Close the connection\n            client.close()\n    \n    return client\n\nHere’s how to run this example:\n\ndef echo_demo():\n    # Start the server\n    server = run_echo_server()\n    \n    try:\n        # Give the server a moment to start\n        time.sleep(1)\n        \n        # Run the client\n        run_echo_client(server_port=server.port)\n        \n    finally:\n        # Stop the server\n        server.stop()\n\n# Uncomment to run this demo\n# echo_demo()",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#custom-message-handling",
+    "href": "examples.html#custom-message-handling",
+    "title": "TCP Server and Client Examples",
+    "section": "2. Custom Message Handling",
+    "text": "2. Custom Message Handling\nLet’s create a server that processes messages rather than just echoing them:\n\ndef run_custom_handler_server():\n    # Create an enhanced server\n    server = EnhancedTCPServer(port=8000)\n    \n    # Define a custom message handler\n    def message_handler(conn_id, data):\n        text = data.decode('utf-8')\n        print(f\"Server processing: {text}\")\n        \n        # Simple processing: count words and characters\n        words = len(text.split())\n        chars = len(text)\n        \n        # Return a formatted response\n        response = f\"Your message had {words} words and {chars} characters.\"\n        return response.encode('utf-8')\n    \n    # Set the message handler\n    server.set_message_handler(message_handler)\n    \n    # Start the server\n    server.start()\n    \n    print(f\"Custom handler server running at {server.host}:{server.port}\")\n    return server\n\nAnd a client to test it:\n\ndef custom_handler_demo():\n    # Start the server\n    server = run_custom_handler_server()\n    \n    try:\n        # Give the server a moment to start\n        time.sleep(1)\n        \n        # Run the client with some test messages\n        messages = [\n            \"Hello there!\",\n            \"This is a longer message with multiple words to count.\",\n            \"The quick brown fox jumps over the lazy dog.\"\n        ]\n        \n        run_echo_client(server_port=server.port, messages=messages)\n        \n    finally:\n        # Stop the server\n        server.stop()\n\n# Uncomment to run this demo\n# custom_handler_demo()",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#event-driven-communication",
+    "href": "examples.html#event-driven-communication",
+    "title": "TCP Server and Client Examples",
+    "section": "3. Event-Driven Communication",
+    "text": "3. Event-Driven Communication\nNow let’s demonstrate event-driven communication:\n\ndef run_event_driven_server():\n    # Create an event-driven server\n    server = EventDrivenTCPServer(port=8000)\n    \n    # Set up event handlers\n    server.on_connect = lambda conn_id, addr: print(f\"SERVER EVENT: Client connected from {addr[0]}:{addr[1]} (ID: {conn_id})\")\n    server.on_disconnect = lambda conn_id: print(f\"SERVER EVENT: Client disconnected (ID: {conn_id})\")\n    server.on_data = lambda conn_id, data: print(f\"SERVER EVENT: Received data from {conn_id}: {data.decode('utf-8')}\")\n    \n    # Set a message handler that uppercases the message\n    def uppercase_handler(conn_id, data):\n        text = data.decode('utf-8')\n        response = text.upper()\n        return response.encode('utf-8')\n    \n    server.set_message_handler(uppercase_handler)\n    \n    # Start the server\n    server.start()\n    \n    print(f\"Event-driven server running at {server.host}:{server.port}\")\n    return server\n\nAnd a matching event-driven client:\n\ndef run_event_driven_client(server_port=8000, messages=None):\n    if messages is None:\n        messages = [\"Hello, event-driven server!\", \"Processing events...\", \"Goodbye!\"]\n    \n    # Create an event-driven client\n    client = EventDrivenTCPClient()\n    \n    # Set up event handlers\n    client.on_connect = lambda host, port: print(f\"CLIENT EVENT: Connected to {host}:{port}\")\n    client.on_disconnect = lambda: print(\"CLIENT EVENT: Disconnected from server\")\n    client.on_data = lambda data: print(f\"CLIENT EVENT: Received data: {data.decode('utf-8')}\")\n    client.on_error = lambda error: print(f\"CLIENT EVENT: Error occurred: {error}\")\n    \n    # Connect to the server\n    if client.connect(LOCALHOST, server_port):\n        try:\n            # Send each message\n            for msg in messages:\n                print(f\"\\nSending: {msg}\")\n                client.send(msg.encode('utf-8'))\n                \n                # Wait for the response to be processed by the event handler\n                time.sleep(1)\n                \n        finally:\n            # Close the connection\n            client.close()\n    \n    return client\n\nLet’s see it in action:\n\ndef event_driven_demo():\n    # Start the server\n    server = run_event_driven_server()\n    \n    try:\n        # Give the server a moment to start\n        time.sleep(1)\n        \n        # Run the client\n        run_event_driven_client(server_port=server.port)\n        \n    finally:\n        # Stop the server\n        server.stop()\n\n# Uncomment to run this demo\n# event_driven_demo()",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#multiple-client-connections",
+    "href": "examples.html#multiple-client-connections",
+    "title": "TCP Server and Client Examples",
+    "section": "4. Multiple Client Connections",
+    "text": "4. Multiple Client Connections\nLet’s demonstrate a server handling multiple clients simultaneously:\n\ndef multiple_clients_demo():\n    # Start a basic echo server\n    server = run_echo_server()\n    \n    try:\n        # Give the server a moment to start\n        time.sleep(1)\n        \n        # Create threads for multiple clients\n        client_threads = []\n        \n        # Function to run in each client thread\n        def client_task(client_id):\n            messages = [\n                f\"Hello from client {client_id}\",\n                f\"This is message 2 from client {client_id}\",\n                f\"Goodbye from client {client_id}\"\n            ]\n            \n            print(f\"Starting client {client_id}\")\n            run_echo_client(server_port=server.port, messages=messages)\n            print(f\"Client {client_id} finished\")\n        \n        # Start multiple client threads\n        for i in range(3):\n            thread = threading.Thread(target=client_task, args=(i+1,))\n            client_threads.append(thread)\n            thread.start()\n        \n        # Wait for all clients to finish\n        for thread in client_threads:\n            thread.join()\n            \n    finally:\n        # Stop the server\n        server.stop()\n\n# Uncomment to run this demo\n# multiple_clients_demo()",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#sending-structured-data-json",
+    "href": "examples.html#sending-structured-data-json",
+    "title": "TCP Server and Client Examples",
+    "section": "5. Sending Structured Data (JSON)",
+    "text": "5. Sending Structured Data (JSON)\nFinally, let’s demonstrate sending structured data as JSON:\n\ndef run_json_server():\n    # Create an enhanced server\n    server = EnhancedTCPServer(port=8000)\n    \n    # Define a custom message handler for JSON data\n    def json_handler(conn_id, data):\n        try:\n            # Parse the JSON data\n            json_data = json.loads(data.decode('utf-8'))\n            print(f\"Server received JSON: {json_data}\")\n            \n            # Process the data based on its type\n            if json_data.get('type') == 'greeting':\n                response = {\n                    'type': 'greeting_response',\n                    'message': f\"Hello, {json_data.get('name', 'Anonymous')}!\",\n                    'timestamp': time.time()\n                }\n            elif json_data.get('type') == 'calculation':\n                # Simple calculation\n                a = json_data.get('a', 0)\n                b = json_data.get('b', 0)\n                op = json_data.get('operation', '+')\n                \n                result = None\n                if op == '+':\n                    result = a + b\n                elif op == '-':\n                    result = a - b\n                elif op == '*':\n                    result = a * b\n                elif op == '/' and b != 0:\n                    result = a / b\n                \n                response = {\n                    'type': 'calculation_response',\n                    'result': result,\n                    'timestamp': time.time()\n                }\n            else:\n                response = {\n                    'type': 'error',\n                    'message': 'Unknown request type',\n                    'timestamp': time.time()\n                }\n            \n            # Send the JSON response\n            return json.dumps(response).encode('utf-8')\n            \n        except json.JSONDecodeError:\n            # Handle invalid JSON\n            error_response = {\n                'type': 'error',\n                'message': 'Invalid JSON format',\n                'timestamp': time.time()\n            }\n            return json.dumps(error_response).encode('utf-8')\n    \n    # Set the message handler\n    server.set_message_handler(json_handler)\n    \n    # Start the server\n    server.start()\n    \n    print(f\"JSON server running at {server.host}:{server.port}\")\n    return server\n\ndef run_json_client(server_port=8000):\n    # Create a TCP client\n    client = TCPClient()\n    \n    # Connect to the server\n    if client.connect(LOCALHOST, server_port):\n        try:\n            # Send a greeting\n            greeting = {\n                'type': 'greeting',\n                'name': 'Alice',\n                'language': 'en'\n            }\n            \n            print(f\"\\nSending greeting: {greeting}\")\n            client.send(json.dumps(greeting).encode('utf-8'))\n            \n            # Receive and parse the response\n            response = client.receive()\n            if response:\n                json_response = json.loads(response.decode('utf-8'))\n                print(f\"Received response: {json_response}\")\n            \n            # Send a calculation request\n            calculation = {\n                'type': 'calculation',\n                'a': 10,\n                'b': 5,\n                'operation': '*'\n            }\n            \n            print(f\"\\nSending calculation: {calculation}\")\n            client.send(json.dumps(calculation).encode('utf-8'))\n            \n            # Receive and parse the response\n            response = client.receive()\n            if response:\n                json_response = json.loads(response.decode('utf-8'))\n                print(f\"Received response: {json_response}\")\n                \n            # Send an invalid request type\n            invalid = {\n                'type': 'unknown_type',\n                'data': 'test'\n            }\n            \n            print(f\"\\nSending invalid type: {invalid}\")\n            client.send(json.dumps(invalid).encode('utf-8'))\n            \n            # Receive and parse the response\n            response = client.receive()\n            if response:\n                json_response = json.loads(response.decode('utf-8'))\n                print(f\"Received response: {json_response}\")\n                \n        finally:\n            # Close the connection\n            client.close()\n    \n    return client\n\nLet’s run the JSON demo:\n\ndef json_demo():\n    # Start the server\n    server = run_json_server()\n    \n    try:\n        # Give the server a moment to start\n        time.sleep(1)\n        \n        # Run the client\n        run_json_client(server_port=server.port)\n        \n    finally:\n        # Stop the server\n        server.stop()\n\n# Uncomment to run this demo\n# json_demo()",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#conclusion",
+    "href": "examples.html#conclusion",
+    "title": "TCP Server and Client Examples",
+    "section": "Conclusion",
+    "text": "Conclusion\nThrough these examples, we’ve demonstrated how our TCP server and client implementations can be used in various scenarios:\n\nA simple echo server and client\nCustom message handling\nEvent-driven communication\nMultiple simultaneous client connections\nStructured data exchange using JSON\n\nThese examples show the flexibility of our implementation and how it can be adapted to different use cases.",
+    "crumbs": [
+      "TCP Server and Client Examples"
+    ]
+  }
+]
