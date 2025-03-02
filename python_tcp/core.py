@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from typing import Optional, List, Tuple, Dict, Any, Union
 import threading
 import time
+import uuid
 
 # %% ../nbs/00_core.ipynb 8
 def get_free_port() -> int:
@@ -44,7 +45,7 @@ class SocketState:
 @dataclass
 class TCPConnection:
     """Represents a TCP connection with state information."""
-    socket: Optional[object] = None
+    sock: Optional[socket.socket] = None
     state: str = SocketState.CLOSED
     remote_address: Optional[Tuple[str, int]] = None
     connection_id: Optional[str] = None
