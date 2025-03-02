@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "python-tcp"
+  site-url: "https://Matthew-Redrup.github.io/python-tcp"
+  description: "A basic Python TCP Client Server implementation"
+  repo-branch: main
+  repo-url: "https://github.com/Matthew-Redrup/python-tcp"
